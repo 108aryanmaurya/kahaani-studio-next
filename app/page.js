@@ -3,7 +3,6 @@ import Image from "next/image";
 import HeroAbout from "./_section/Home/Hero/HeroAbout";
 import BrandLogo from "./_section/Home/Brands/BrandLogo";
 import HomeAbout from "./_section/Home/About/HomeAbout";
-import StoryContent from "./_section/Home/Stories/StoryContent";
 import YoutubeContent from "./_section/Home/YoutubeContent/YoutubeContent";
 import NewsletterHero from "./_section/Home/Newsletter/NewsletterHero";
 export async function generateMetadata() {
@@ -28,9 +27,7 @@ export default function Home() {
         <div className="mx-auto max-w-screen-xl max-md:pt-5">
           <HomeAbout />
         </div>
-        <div className="mx-auto max-w-screen-xl pt-40 max-md:pt-5">
-          <StoryContent />
-        </div>
+
         <div className="mx-auto max-w-screen-xl pt-10 max-md:pt-5">
           <YoutubeContent />
         </div>
