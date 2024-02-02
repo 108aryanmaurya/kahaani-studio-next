@@ -13,6 +13,8 @@ export const metadata = {
   openGraph: {
     title: "Opengraph",
     description: "Opengraph DEscription",
+    images:
+      "https://res.cloudinary.com/dhktoeo0l/image/upload/v1706561346/ztes5h7f5vhjipnkgdxd.png",
   },
   image: "https://nextjs.org/imgs/sticker.png",
 };
