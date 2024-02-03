@@ -16,7 +16,7 @@ export default function SearchDropDown({ searchResult }) {
     <>
       <div
         id="dropdownAvatarName"
-        className="dark:bg-darkBgPrimary absolute left-6 top-16 z-50 block w-[200%] max-w-[700px] divide-y divide-gray-100 rounded-lg border bg-white shadow-2xl"
+        className="dark:bg-darkBgPrimary absolute left-6 max-sm:left-1 top-16 z-50 block w-[100%] max-w-[700px] max-sm:max-w-[390px] divide-y divide-gray-100 rounded-lg border bg-white shadow-2xl"
       >
         {!destinations?.length && !blogs?.length && !articles?.length ? (
           <div className="my-2">

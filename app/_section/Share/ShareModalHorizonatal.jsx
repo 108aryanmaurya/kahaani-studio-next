@@ -70,7 +70,7 @@ export default function ShareModalHorizonatal({ title }) {
             </>
           ) : (
             <span
-              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-stone-600 bg-stone-600 px-5 py-3 text-white transition duration-200 hover:border-stone-700 hover:bg-stone-700 max-sm:p-1 max-sm:px-2 max-sm:text-xs"
+              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-stone-600 bg-stone-600 px-5 py-3 text-white transition duration-200 hover:border-stone-700 hover:bg-stone-700 max-sm:p-1 max-sm:px-3 max-sm:text-sm"
               target="_blank"
               rel="noopener"
               aria-label="Share on Twitter"
@@ -82,7 +82,7 @@ export default function ShareModalHorizonatal({ title }) {
 
           <FacebookShareButton url={currentUrl}>
             <a
-              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-[#316FF6] bg-[#316FF6] px-5 py-3 text-white transition duration-200 hover:border-[#316FF6] hover:bg-[#316ff6cc] max-sm:p-1 max-sm:px-2 max-sm:text-xs"
+              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-[#316FF6] bg-[#316FF6] px-5 py-3 text-white transition duration-200 hover:border-[#316FF6] hover:bg-[#316ff6cc] max-sm:p-1 max-sm:px-3 max-sm:text-sm"
               target="_blank"
               rel="noopener"
               aria-label="Share on Facebook"
@@ -93,7 +93,7 @@ export default function ShareModalHorizonatal({ title }) {
           </FacebookShareButton>
           <TwitterShareButton url={currentUrl}>
             <a
-              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-blue-600 bg-[#1da1f2] px-5 py-3 text-white transition duration-200 hover:border-blue-500 hover:bg-blue-400 max-sm:p-1 max-sm:px-2 max-sm:text-xs"
+              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-blue-600 bg-[#1da1f2] px-5 py-3 text-white transition duration-200 hover:border-blue-500 hover:bg-blue-400 max-sm:p-1 max-sm:px-3 max-sm:text-sm"
               target="_blank"
               rel="noopener"
               aria-label="Share on Twitter"
@@ -106,7 +106,7 @@ export default function ShareModalHorizonatal({ title }) {
 
           <WhatsappShareButton url={currentUrl}>
             <a
-              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-green-600 bg-green-500 px-5 py-3 text-white transition duration-200 hover:border-green-700 hover:bg-green-400 max-sm:p-1 max-sm:px-2 max-sm:text-xs"
+              className="ease mb-1 mr-1 inline-flex items-center rounded-full border-2 border-green-600 bg-green-500 px-5 py-3 text-white transition duration-200 hover:border-green-700 hover:bg-green-400 max-sm:p-1 max-sm:px-3 max-sm:text-sm"
               target="_blank"
               rel="noopener"
               aria-label="Share on Whatsapp"

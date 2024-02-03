@@ -44,7 +44,7 @@ const SearchBar = ({ scrollDirection }) => {
   const handleInputBlur = () => {
     const blurTimeout = setTimeout(() => {
       setSearchResultExist(false);
-    }, 500);
+    }, 100);
   };
   const handleInputFocus = () => {
     if (searchtext.trim() != "") {

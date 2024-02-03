@@ -4,7 +4,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { navLinks } from "../constants";
 import SideNav from "./SideNav";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
+import { HiMiniBars3BottomRight } from "react-icons/hi2";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "../Search/SearchBar";
@@ -101,7 +103,7 @@ const Navbar = () => {
           className={`top-0 flex w-full flex-row items-center justify-between px-6 py-3 max-md:flex-row max-md:justify-between max-md:px-4 max-md:py-2`}
         >
           <div className="w-60 max-sm:w-auto">
-            <SearchBar />
+            <SearchBar scrollDirection={scrollDirection} />
           </div>
 
           <div className="mx-auto flex w-auto items-center justify-center max-sm:mt-0 2xl:mb-2">
@@ -139,7 +141,7 @@ const Navbar = () => {
           <div className="hidden outline-none max-md:block" onClick={NavStatus}>
             <div className="group relative outline-none hover:bg-transparent">
               <div className="relative flex transform items-center justify-center overflow-hidden text-4xl font-thin text-white  mix-blend-difference transition-all duration-200">
-                {showNav ? <FaTimes /> : <FaBars />}
+                {showNav ? <RxCross2 /> : <HiMiniBars3BottomRight />}
               </div>
             </div>
           </div>
