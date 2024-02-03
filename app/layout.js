@@ -1,27 +1,25 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/common/Navbar";
 import Footer from "./_components/common/Footer";
 import ScrollProgress from "./_components/common/ScrollProgress";
 import ScrollToTop from "./_components/common/ScrollToTop";
-const inter = Inter({ subsets: ["latin"] });
+
 export const metadata = {
   title: {
     default: "Kahaani Studio",
+    template: "%s | Kahaani Studio",
   },
   description: "dynamic description",
   openGraph: {
     title: "Opengraph",
     description: "Opengraph DEscription",
-    images:
-      "https://res.cloudinary.com/dhktoeo0l/image/upload/v1706561346/ztes5h7f5vhjipnkgdxd.png",
   },
   image: "https://nextjs.org/imgs/sticker.png",
 };
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className=" container">
           <Navbar />
           <ScrollProgress />

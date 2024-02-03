@@ -1,17 +1,57 @@
 import React from "react";
-import { fetchablogswithcontent } from "@/lib/actions/blogs.actions";
+import {
+  fetchablogswithcontent,
+  fetchblogs,
+} from "@/lib/actions/blogs.actions";
 import Hero from "@/app/_section/SingleBlogPage/LeftSection/BlogHero";
 import BlogMainContent from "@/app/_section/SingleBlogPage/LeftSection/BlogMainContent";
 import AboutColumn from "@/app/_section/SingleBlogPage/RightSection/AboutColumn";
 import ShareModal from "@/app/_section/Share/ShareModal";
 import ShareModalHorizonatal from "@/app/_section/Share/ShareModalHorizonatal";
 import SingleBlogPageSkeleton from "@/app/_layouts/Skeletons/SingleBlogPageSkeleton";
-export default async function page({ params: { blogId, blogName } }) {
-  const blogs = await fetchablogswithcontent(blogId);
+import { cache } from "react";
+import { notFound } from "next/navigation";
 
-  if (!blogs || blogs.length === 0) {
-    return <SingleBlogPageSkeleton />;
+const getblogs = cache(async (blogId) => {
+  const blogs = await fetchablogswithcontent(blogId);
+  return blogs;
+});
+
+export async function generateStaticParams() {
+  const blogs = await fetchblogs();
+  return blogs
+    .map((blog) => ({
+      params: {
+        blogId: blog._id,
+        blogName: blog.title,
+      },
+    }))
+    .slice(0, 10);
+}
+export async function generateMetadata({ params: { blogId } }) {
+  const blogs = await getblogs(blogId);
+  if (blogs === null) {
+    return notFound();
   }
+  const { title, imageURL } = blogs;
+  return {
+    title: title,
+    description: "This is the BlogPage Description",
+    openGraph: {
+      title: title,
+      description: "This is the BlogPage of Kahaani Studio Description",
+      images: imageURL,
+    },
+    image: imageURL,
+  };
+}
+export default async function page({ params: { blogId, blogName } }) {
+  const blogs = await getblogs(blogId);
+
+  if (blogs === null) {
+    return notFound();
+  }
+
   const { date, title, category, imageURL, blogContent } = blogs;
   return (
     <>
@@ -27,7 +67,7 @@ export default async function page({ params: { blogId, blogName } }) {
           <div className="sm:hidden">
             <ShareModalHorizonatal title={title} />
           </div>
-          <BlogMainContent content={blogContent?.content} />
+          {blogContent && <BlogMainContent content={blogContent.content} />}
           <ShareModalHorizonatal title={title} />
         </article>
         <div className="pl-5">

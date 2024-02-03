@@ -1,16 +1,57 @@
 import React from "react";
-import { fetcharticleswithcontent } from "@/lib/actions/articles.actions";
+import {
+  fetcharticleswithcontent,
+  fetcharticles,
+} from "@/lib/actions/articles.actions";
 import ShareModal from "@/app/_section/Share/ShareModal";
 import ShareModalHorizonatal from "@/app/_section/Share/ShareModalHorizonatal";
 import ArticleHero from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleHero";
 import MainContent from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleMainContent";
 import SingleBlogPageSkeleton from "@/app/_layouts/Skeletons/SingleBlogPageSkeleton";
 import Footer from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleFooter";
-export default async function page({ params: { articleId, articleName } }) {
-  const articles = await fetcharticleswithcontent(articleId);
+import { cache } from "react";
+import { notFound } from "next/navigation";
 
-  if (!articles || articles.length === 0) {
-    return <SingleBlogPageSkeleton />;
+const getarticles = cache(async (blogId) => {
+  const articles = await fetcharticleswithcontent(blogId);
+  return articles;
+});
+
+export async function generateStaticParams() {
+  const articles = await fetcharticles();
+  return articles
+    .map((article) => ({
+      params: {
+        articleId: article._id,
+        articleName: article.title,
+      },
+    }))
+    .slice(0, 10);
+}
+
+export async function generateMetadata({ params: { articleId } }) {
+  const articles = await getarticles(articleId);
+  if (articles === null) {
+    return notFound();
+  }
+  const { title, imageURL } = articles;
+  return {
+    title: title,
+    description: "This is the BlogPage Description",
+    openGraph: {
+      title: title,
+      description: "This is the BlogPage of Kahaani Studio Description",
+      images: imageURL,
+    },
+    image: imageURL,
+  };
+}
+
+export default async function page({ params: { articleId, articleName } }) {
+  const articles = await getarticles(articleId);
+
+  if (articles === null) {
+    return notFound();
   }
   const { date, title, category, imageURL, articleContent } = articles;
 

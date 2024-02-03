@@ -3,9 +3,6 @@ import { navLinks } from "../constants";
 import Link from "next/link";
 
 export default function SideNav(props) {
-  const { NavStatus } = props;
-  const [showoption, setshowoption] = useState(false);
-  const navigate = useNavigate();
   return (
     <>
       <div
