@@ -1,6 +1,6 @@
 import React from "react";
 import { FaDotCircle } from "react-icons/fa";
-import { FormatDate } from "../../../Contexts/Date/FormatDate";
+import { FormatDate } from "@/app/_components/helper/FormatDate";
 export default function Hero({ date, title, category, imageURL }) {
   return (
     <>

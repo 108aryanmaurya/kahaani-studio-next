@@ -1,25 +1,20 @@
+"use client";
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import ArticleClientContext from "../../../Contexts/Articles/ArticleClientContext";
+import { useRouter } from "next/navigation";
 
-export default function Articles() {
-  const { articles, fetchArticle } = useContext(ArticleClientContext);
-  const navigate = useNavigate();
+export default function Articles({ articles }) {
+  const route = useRouter();
 
-  useEffect(() => {
-    // Fetch blogs when the component mounts
-    fetchArticle();
-  }, []);
   return (
     <>
       {articles.map((article, index) => (
         <div
           key={index}
           onClick={() =>
-            navigate(
-              `/articles/${article.title.toLowerCase().replace(/\s+/g, "-")}/${
-                article?._id
-              }`
+            route.push(
+              `/articles/${article?._id}/${article.title
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`
             )
           }
           className={`md group mx-14 flex cursor-pointer flex-wrap items-center max-md:mx-5 max-md:mb-5 max-md:flex-col-reverse ${

@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 function DestinationResults({ destinations }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const getDefaultImage = () => {
     // Replace with the default image URL if imageURL is not found or empty
     return "https://1.img-dpreview.com/files/p/TS560x560~forums/62803172/ae5fffae14814b88b8eb7551ef16ea84";
@@ -16,8 +17,10 @@ function DestinationResults({ destinations }) {
             key={destination._id}
             className="mb-4"
             onClick={() =>
-              navigate(
-                `/destination/${destination.location.toLowerCase().replace(/\s+/g, "-")}`,
+              router.push(
+                `/destinations/${destination.location
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`
               )
             }
           >

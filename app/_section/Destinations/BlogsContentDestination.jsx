@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+"use client";
+
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function BlogsContentDestination({ blogs }) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <>
@@ -15,10 +17,10 @@ export default function BlogsContentDestination({ blogs }) {
             className="group w-1/3 cursor-pointer rounded px-5 pb-5 max-md:w-full max-md:px-0"
             key={index}
             onClick={() =>
-              navigate(
-                `/blog/${blog.title.toLowerCase().replace(/\s+/g, "-")}/${
-                  blog?._id
-                }`
+              router.push(
+                `/blogs/${blog?._id}/${blog.title
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`
               )
             }
           >

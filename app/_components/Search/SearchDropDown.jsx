@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect } from "react";
 import DestinationResults from "./DestinationResults";
 import ArticlesResults from "./ArticlesResults";
@@ -16,7 +18,7 @@ export default function SearchDropDown({ searchResult }) {
         id="dropdownAvatarName"
         className="dark:bg-darkBgPrimary absolute left-6 top-16 z-50 block w-[200%] max-w-[700px] divide-y divide-gray-100 rounded-lg border bg-white shadow-2xl"
       >
-        {!destinations.length && !blogs.length && !articles.length ? (
+        {!destinations?.length && !blogs?.length && !articles?.length ? (
           <div className="my-2">
             <h1 className="mx-3 font-CooperHewitt">No results found</h1>
           </div>

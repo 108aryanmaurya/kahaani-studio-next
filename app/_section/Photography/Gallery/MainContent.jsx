@@ -1,22 +1,26 @@
+"use client";
 import React, { useState, useEffect, useContext } from "react";
 import "./index.css";
 import PhotoModal from "./PhotoModal";
-import GalleryClientContext from "../../../Contexts/Gallery/GalleryClientContext";
 import GallerySkeleton from "./GallerySkeleton";
+import Image from "next/image";
 
-export default function MainContent() {
+export default function MainContent({ photos }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [loadedImages, setLoadedImages] = useState([]);
-  const { images, fetchImages } = useContext(GalleryClientContext);
+  const [images, setImages] = useState(photos);
 
   useEffect(() => {
-    // Fetch images when the component mounts
-    fetchImages();
-  }, []);
-
+    console.log("Photos", photos);
+    setImages(photos);
+  }, [photos]);
   const handleImageLoad = (imageId) => {
     // Mark the image as loaded
-    setLoadedImages((prevLoadedImages) => [...prevLoadedImages, imageId]);
+    setLoadedImages((prevLoadedImages) => {
+      console.log("Previous Loaded Images:", prevLoadedImages);
+      console.log("Adding Image ID:", imageId);
+      return [...prevLoadedImages, imageId];
+    });
   };
 
   // if (!images || images.length === 0) {
@@ -37,34 +41,27 @@ export default function MainContent() {
       <h1 className="text-center font-CooperHewitt text-4xl font-thin uppercase">
         Photo Gallery
       </h1>
-      <div className="mt-10 block w-full columns-3 break-inside-avoid gap-0 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
+      <div className="mt-10 block w-full columns-3 break-inside-avoid gap-10 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
         {images.map((image, index) => (
           <div
-            className="group relative m-2 my-4 cursor-pointer overflow-hidden bg-gray-200 max-md:m-1 max-md:my-2 "
+            className="group unset-img relative m-2 my-4 w-full h-full min-h-[500px] max-h-full cursor-pointer overflow-hidden max-md:m-1 max-md:my-2 "
             key={index}
+            onClick={() => openImage(image)}
           >
-            <div
-              className="bg-gray-200 "
-              href={`#${image._id}`}
-              onClick={() => openImage(image)}
-            >
-              <img
-                loading="lazy"
-                className="w-full transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:opacity-90"
-                alt={image.imgDescription}
-                src={image.imageURL}
-                onLoad={() => handleImageLoad(image._id)}
-              />
-              {loadedImages.includes(image._id) || (
-                <div className="skeleton-loader">
-                  <div className="m-2 min-h-[300px] w-auto animate-pulse rounded-sm bg-gray-200"></div>
-                </div>
-              )}
-              <div className="absolute left-0  top-0 bg-[#00000071] px-5 py-3 transition-all duration-300 ease-in-out max-md:px-2 max-md:py-1">
-                <h1 className="block font-Oswald text-base uppercase tracking-wide text-white max-md:text-xs">
-                  {image.imageLocation}
-                </h1>
-              </div>
+            <Image
+              src={image.imageURL}
+              alt={image.imgDescription}
+              className=" custom-img w-full h-auto transition-all object-cover object-center duration-500 ease-in-out  group-hover:scale-105 group-hover:opacity-90"
+              onLoad={() => handleImageLoad(image._id)}
+              layout="fill"
+            />
+
+            {/* <img loading="lazy" /> */}
+
+            <div className="absolute left-0  top-0 bg-[#00000071] px-5 py-3 transition-all duration-300 ease-in-out max-md:px-2 max-md:py-1">
+              <h1 className="block font-Oswald text-base uppercase tracking-wide text-white max-md:text-xs">
+                {image.imageLocation}
+              </h1>
             </div>
           </div>
         ))}

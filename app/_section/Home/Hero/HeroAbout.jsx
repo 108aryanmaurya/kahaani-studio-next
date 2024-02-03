@@ -1,6 +1,5 @@
 import React from "react";
 export default function HeroAbout() {
-  console.log("HeroAbout.jsx: HeroAbout()");
   return (
     <>
       <div className="relative h-screen max-h-[800px] overflow-hidden bg-black  text-white">

@@ -1,9 +1,6 @@
+"use client";
 import React from "react";
-import { useParams } from "react-router-dom";
-
-export default function Hero() {
-  const { location } = useParams();
-
+export default function Hero({ location }) {
   return (
     <>
       <div className="mx-auto w-full space-y-4 px-40 pb-20 pt-10   text-center">

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { FaTwitter, FaFacebook, FaWhatsapp } from "react-icons/fa";
 import {
@@ -8,7 +9,7 @@ import {
 import ShareWeb from "./ShareWeb";
 
 export default function ShareModal({ title }) {
-  const currentUrl = window.location.href;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <>

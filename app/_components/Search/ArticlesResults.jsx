@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 export default function ArticlesResults({ articles }) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <>
@@ -11,8 +12,10 @@ export default function ArticlesResults({ articles }) {
           <li
             key={article._id}
             onClick={() =>
-              navigate(
-                `/articles/${article.title.toLowerCase().replace(/\s+/g, "-")}/${article?._id}`,
+              router.push(
+                `/articles/${article?._id}/${article.title
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`
               )
             }
             className="flex w-full cursor-pointer justify-between rounded-sm px-2 py-1 hover:bg-gray-100"

@@ -1,15 +1,9 @@
+"use client";
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import BlogClientContext from "../../../Contexts/Blogs/BlogClientContext";
+import { useRouter } from "next/navigation";
 
-export default function BlogContent() {
-  const { blogs, fetchBlogs } = useContext(BlogClientContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Fetch blogs when the component mounts
-    fetchBlogs();
-  }, []);
+export default function BlogContent({ blogs }) {
+  const route = useRouter();
 
   return (
     <>
@@ -22,10 +16,10 @@ export default function BlogContent() {
             className="group w-1/3 cursor-pointer rounded px-5 pb-5 max-md:w-full max-md:px-0"
             key={index}
             onClick={() =>
-              navigate(
-                `/blog/${blog.title.toLowerCase().replace(/\s+/g, "-")}/${
-                  blog?._id
-                }`
+              route.push(
+                `/blogs/${blog?._id}/${blog.title
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}`
               )
             }
           >

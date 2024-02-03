@@ -1,29 +1,34 @@
+"use client";
 import React, { useState, useEffect, useContext } from "react";
 import SearchDropDown from "./SearchDropDown";
-import ClientSearchContext from "../../Contexts/Search/ClientSearchContext";
-
+import { searcheverything } from "@/lib/actions/search.actions";
 const SearchBar = ({ scrollDirection }) => {
   const [expanded, setExpanded] = useState(false);
   const [searchtext, setSearchtext] = useState("");
   const [searchResult, setSearchResult] = useState({});
   const [searchResultExist, setSearchResultExist] = useState(false);
-  const { fetchResults, results } = useContext(ClientSearchContext);
 
   useEffect(() => {
-    if (searchtext.trim().length > 3) {
-      fetchResults(searchtext);
-    } else {
-      setSearchResult({});
-      setSearchResultExist(false);
-    }
+    const fetchData = async () => {
+      if (searchtext.trim().length > 3) {
+        const result = await searcheverything(searchtext);
+        console.log(result);
+        setSearchResult(result);
+        setSearchResultExist(true);
+      } else {
+        setSearchResult({});
+        setSearchResultExist(false);
+      }
+    };
+
+    fetchData();
   }, [searchtext]);
-
-  useEffect(() => {
-    if (results.length != 0) {
-      setSearchResult(results);
-      setSearchResultExist(true);
-    }
-  }, [results]);
+  // useEffect(() => {
+  //   if (results.length != 0) {
+  //     setSearchResult(results);
+  //     setSearchResultExist(true);
+  //   }
+  // }, [results]);
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -39,7 +44,7 @@ const SearchBar = ({ scrollDirection }) => {
   const handleInputBlur = () => {
     const blurTimeout = setTimeout(() => {
       setSearchResultExist(false);
-    }, 200);
+    }, 500);
   };
   const handleInputFocus = () => {
     if (searchtext.trim() != "") {

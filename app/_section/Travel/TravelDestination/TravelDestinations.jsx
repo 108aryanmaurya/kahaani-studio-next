@@ -1,19 +1,11 @@
-import React, { useContext, useEffect } from "react";
+"use client";
+import React from "react";
 import SubTravelDestinations from "./SubTravelDestinations";
-import { useNavigate } from "react-router-dom";
-import DestinationClientContext from "../../../Contexts/Destinations/DestinationClientContext";
+import { useRouter } from "next/navigation";
 
-export default function TravelDestinations() {
-  const navigate = useNavigate();
-  const { destinations, fetchDestinations } = useContext(
-    DestinationClientContext
-  );
-
-  useEffect(() => {
-    // Fetch destinations when the component mounts
-    fetchDestinations();
-  }, []);
-
+export default function TravelDestinations({ destinations }) {
+  const router = useRouter();
+  console.log("destinations", destinations);
   // Display only the top 6 destinations
   const topDestinations = destinations.slice(0, 6);
 
@@ -36,8 +28,8 @@ export default function TravelDestinations() {
             key={index}
             className="relative overflow-hidden"
             onClick={() =>
-              navigate(
-                `/destination/${destination.location
+              router.push(
+                `/destinations/${destination.location
                   .toLowerCase()
                   .replace(/\s+/g, "-")}`
               )

@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 export default function SubTravelDestinations({ destinations }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const scrollContainerRef = useRef(null);
 
   const handleScroll = (scrollOffset) => {
@@ -41,8 +43,8 @@ export default function SubTravelDestinations({ destinations }) {
                 className="relative flex cursor-pointer flex-col items-start  justify-start bg-cover bg-center text-left"
                 key={destination.id}
                 onClick={() =>
-                  navigate(
-                    `/destination/${destination.location
+                  router.push(
+                    `/destinations/${destination.location
                       .toLowerCase()
                       .replace(/\s+/g, "-")}`
                   )

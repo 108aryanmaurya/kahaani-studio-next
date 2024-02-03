@@ -29,8 +29,6 @@ const featuredLogos = [
 ];
 
 export default function BrandLogo() {
-  console.log("Brangloo.jsx: HeroAbout()");
-
   return (
     <>
       <section className="bg-white">

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormatDate } from "../../../Contexts/Date/FormatDate";
+import { FormatDate } from "@/app/_components/helper/FormatDate";
 
 export default function ArticleHero({ date, title, category, imageURL }) {
   return (

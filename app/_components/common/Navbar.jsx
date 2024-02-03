@@ -7,7 +7,7 @@ import SideNav from "./SideNav";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import SearchBar from "../Search/SearchBar";
 const Navbar = () => {
   const pathname = usePathname();
   const [showNav, setNav] = useState(false);
@@ -100,7 +100,9 @@ const Navbar = () => {
         <nav
           className={`top-0 flex w-full flex-row items-center justify-between px-6 py-3 max-md:flex-row max-md:justify-between max-md:px-4 max-md:py-2`}
         >
-          <div className="w-60 max-sm:w-auto"></div>
+          <div className="w-60 max-sm:w-auto">
+            <SearchBar />
+          </div>
 
           <div className="mx-auto flex w-auto items-center justify-center max-sm:mt-0 2xl:mb-2">
             <span className="flex w-auto flex-1 items-center justify-center gap-2 max-md:hidden">

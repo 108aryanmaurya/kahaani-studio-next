@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+"use client";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 export default function ArticlesContentDestination({ articles }) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <>
@@ -9,10 +10,10 @@ export default function ArticlesContentDestination({ articles }) {
         <div
           key={index}
           onClick={() =>
-            navigate(
-              `/articles/${article.title.toLowerCase().replace(/\s+/g, "-")}/${
-                article?._id
-              }`
+            router.push(
+              `/articles/${article?._id}/${article.title
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`
             )
           }
           className={`md group mx-14 flex cursor-pointer flex-wrap items-center max-md:mx-5 max-md:mb-5 max-md:flex-col-reverse ${

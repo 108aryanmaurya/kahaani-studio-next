@@ -3,14 +3,14 @@ import { RWebShare } from "react-web-share";
 import { FaShare } from "react-icons/fa";
 
 const ShareWeb = ({ title }) => {
-  const currentURL = window.location.href;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <>
       <RWebShare
         data={{
           text: `${title}\n`,
-          url: currentURL,
+          url: currentUrl,
           title: "Kahaani Studio",
         }}
         sites={["facebook", "twitter", "linkedin", "whatsapp"]}
