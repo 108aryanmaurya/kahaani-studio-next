@@ -46,7 +46,7 @@ export default function PhotoModal({
   };
   const navigateImage = (direction) => {
     const currentIndex = imageData.findIndex(
-      (image) => image._id === selectedImage._id,
+      (image) => image._id === selectedImage._id
     );
     let nextIndex;
 
@@ -75,7 +75,7 @@ export default function PhotoModal({
             <img
               loading="lazy"
               ref={imageRef}
-              className={`ease max-h-[95vh] transform transition-transform duration-300 ${
+              className={`ease max-h-[95vh] w-full h-auto transform transition-transform duration-300 ${
                 zoomed ? "scale-[2]  cursor-zoom-out" : " cursor-zoom-in "
               }`}
               alt={selectedImage.imgDescription}
@@ -104,7 +104,7 @@ export default function PhotoModal({
           </div>
         </div>
         <div
-          className="-translate-y-2/2 absolute left-0 flex transform cursor-pointer items-center bg-[#00000086] py-10 max-md:bottom-0"
+          className="-translate-y-2/2 absolute z-[99999999999999]  left-0 flex transform cursor-pointer items-center bg-[#00000086] py-10 max-md:bottom-0"
           onClick={() => navigateImage("left")}
         >
           <button className="cursor-pointer bg-transparent p-2 text-2xl text-white">
@@ -112,10 +112,10 @@ export default function PhotoModal({
           </button>
         </div>
         <div
-          className="-translate-y-1/1 absolute right-0 flex transform cursor-pointer items-center bg-[#00000086] py-10 max-md:bottom-0"
+          className="-translate-y-1/1 absolute right-0  z-[99999999999999] flex transform cursor-pointer items-center bg-[#00000086] py-10 max-md:bottom-0"
           onClick={() => navigateImage("right")}
         >
-          <button className="cursor-pointer bg-transparent p-2 text-2xl text-white">
+          <button className="cursor-pointer bg-transparent  p-2 text-2xl text-white">
             <FaChevronRight />
           </button>
         </div>

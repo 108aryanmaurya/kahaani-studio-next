@@ -23,11 +23,11 @@ export default function BlogContent({ blogs }) {
               )
             }
           >
-            <div className="">
-              <div className="h-full w-full">
+            <div className="group">
+              <div className="h-full w-full rounded overflow-hidden">
                 <img
                   loading="lazy"
-                  className="max-h-[200px] min-h-[200px] w-full rounded-t object-cover"
+                  className="max-h-[200px] hover:scale-[1.03] transition-all ease-in-out duration-500 min-h-[200px] w-full rounded object-cover"
                   src={blog.imageURL}
                   alt={blog.title}
                 />

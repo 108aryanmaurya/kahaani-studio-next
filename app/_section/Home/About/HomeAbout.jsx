@@ -14,22 +14,22 @@ export default function HomeAbout() {
           ></img>
         </div>
         <div className="mr-28 flex w-full max-w-[500px] flex-col max-md:mr-0 max-md:mt-10 max-md:max-w-full max-md:px-5">
-          <h1 className="relative pb-5 font-Oswald text-5xl font-semibold capitalize max-sm:pb-2">
+          <h1 className="relative pb-5 font-Oswald text-5xl max-sm:text-2xl font-semibold capitalize max-sm:pb-2">
             Shikha Gautam
           </h1>
-          <p className="pb-5 font-HankenGrotesk text-2xl">
+          <p className="pb-5 max-sm:pb-2 font-HankenGrotesk text-2xl max-sm:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
             laborum suscipit doloremque, expedita voluptatum maiores corporis
             modi assumenda esse consectetur error nulla.
           </p>
-          <p className="pb-5 font-HankenGrotesk text-2xl">
+          <p className="pb-5 max-sm:pb-2 font-HankenGrotesk text-2xl max-sm:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
             laborum suscipit doloremque, expedita voluptatum maiores corporis
             modi assumenda esse consectetur error nulla, vero alias. Lorem ipsum
             dolor sit amet consectetur adipisicing elit. Esse consectetur error
             nulla, vero alias.
           </p>
-          <span className="font-Minerva cursor-pointer text-lg font-semibold">
+          <span className="font-sans max-sm:text-sm cursor-pointer text-lg font-semibold">
             #content curation #art direction #copywriting #web design
             #interaction design #webflow development
           </span>

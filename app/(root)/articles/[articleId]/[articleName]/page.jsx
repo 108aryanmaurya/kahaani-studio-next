@@ -31,7 +31,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params: { articleId } }) {
   const articles = await getarticles(articleId);
-  if (articles === null) {
+  if (articles === false) {
     return notFound();
   }
   const { title, imageURL } = articles;
@@ -50,7 +50,7 @@ export async function generateMetadata({ params: { articleId } }) {
 export default async function page({ params: { articleId, articleName } }) {
   const articles = await getarticles(articleId);
 
-  if (articles === null) {
+  if (articles === false) {
     return notFound();
   }
   const { date, title, category, imageURL, articleContent } = articles;

@@ -3,7 +3,7 @@ import React from "react";
 export default function Hero({ location }) {
   return (
     <>
-      <div className="mx-auto w-full space-y-4 px-40 pb-20 pt-10   text-center">
+      <div className="mx-auto w-full space-y-4 px-40 max-sm:px-3 pb-20 pt-10 max-sm:pt-2 max-sm:pb-5   text-center">
         <h1 className="font-CooperHewitt text-2xl font-semibold uppercase tracking-wide">
           #{location}
         </h1>

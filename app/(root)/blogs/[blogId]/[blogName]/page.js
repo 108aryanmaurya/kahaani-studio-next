@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 }
 export async function generateMetadata({ params: { blogId } }) {
   const blogs = await getblogs(blogId);
-  if (blogs === null) {
+  if (blogs === false) {
     return notFound();
   }
   const { title, imageURL } = blogs;
@@ -48,7 +48,7 @@ export async function generateMetadata({ params: { blogId } }) {
 export default async function page({ params: { blogId, blogName } }) {
   const blogs = await getblogs(blogId);
 
-  if (blogs === null) {
+  if (blogs === false) {
     return notFound();
   }
 

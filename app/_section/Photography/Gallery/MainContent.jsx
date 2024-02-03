@@ -41,10 +41,10 @@ export default function MainContent({ photos }) {
       <h1 className="text-center font-CooperHewitt text-4xl font-thin uppercase">
         Photo Gallery
       </h1>
-      <div className="mt-10 block w-full columns-3 break-inside-avoid gap-10 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
+      <div className="mt-10 block w-full columns-3 max-sm:p-1 break-inside-avoid gap-10 max-sm:gap-1 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
         {images.map((image, index) => (
           <div
-            className="group unset-img relative m-2 my-4 w-full h-full min-h-[500px] max-h-full cursor-pointer overflow-hidden max-md:m-1 max-md:my-2 "
+            className="group unset-img relative m-2 max-sm:m-0 my-4 w-full h-full min-h-[500px] max-h-full cursor-pointer overflow-hidden max-md:m-1 max-md:my-2 "
             key={index}
             onClick={() => openImage(image)}
           >
