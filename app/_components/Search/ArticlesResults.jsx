@@ -28,7 +28,7 @@ export default function ArticlesResults({ articles }) {
             <img
               src={article.imageURL}
               alt={article.title}
-              className="h-8 rounded-sm object-cover"
+              className="h-8 rounded-sm object-cover object-center"
             />
           </li>
         ))}
