@@ -12,8 +12,8 @@ import Footer from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleFoote
 import { cache } from "react";
 import { notFound } from "next/navigation";
 
-const getarticles = cache(async (blogId) => {
-  const articles = await fetcharticleswithcontent(blogId);
+const getarticles = cache(async (articleId) => {
+  const articles = await fetcharticleswithcontent(articleId);
   return articles;
 });
 

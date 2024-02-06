@@ -6,7 +6,7 @@ import ContactInfo from "./Contact/ContactInfo";
 export default function ContactForm() {
   return (
     <>
-      <div class="max-w-screen-xl mt-0 flex">
+      <div class="w-full mt-0 flex">
         <div className="w-1/2 flex justify-center items-center max-lg:w-full ">
           <ContactInfo />
         </div>

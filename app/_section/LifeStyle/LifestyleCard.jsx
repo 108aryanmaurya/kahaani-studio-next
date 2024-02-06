@@ -27,7 +27,7 @@ export default function LifestyleCard({ lifestyle }) {
               <div className="h-full w-full max-h-[300px] rounded overflow-hidden">
                 <img
                   loading="lazy"
-                  className="h-full group-hover:scale-[1.02] transition-all ease-in-out duration-500 min-h-[200px] w-full rounded object-cover"
+                  className="h-full group-hover:scale-[1.02] transition-all ease-in-out duration-200 min-h-[200px] w-full rounded object-cover"
                   src={lifestyle?.imageURL}
                   alt={lifestyle?.title}
                 />

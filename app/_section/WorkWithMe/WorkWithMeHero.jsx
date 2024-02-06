@@ -27,12 +27,6 @@ export default function WorkWithMeHero() {
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
               accusantium nesciunt maxime fugiat exercitationem facilis.
             </div>
-            <div className="description mt-4 w-full font-HankenGrotesk text-2xl ml-3 text-gray-500 md:w-2/3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil
-              accusantium nesciunt maxime fugiat exercitationem facilis,
-              voluptatum asperiores sequi necessitatibus neque illo accusamus
-              sint, unde quis? Illo exercitationem laborum possimus id.
-            </div>
           </div>
         </div>
       </div>

@@ -43,7 +43,7 @@ export default function FoodCards() {
           <a
             key={index}
             href="#"
-            className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 "
+            className="flex group flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 "
           >
             <img
               className="object-cover w-full min-w-72 rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
