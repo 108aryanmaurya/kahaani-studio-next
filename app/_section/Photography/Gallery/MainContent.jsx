@@ -59,7 +59,7 @@ export default function MainContent({ photos }) {
             {/* <img loading="lazy" /> */}
 
             <div className="absolute left-0  top-0 bg-[#00000071] px-5 py-3 transition-all duration-300 ease-in-out max-md:px-2 max-md:py-1">
-              <h1 className="block font-Oswald text-base uppercase tracking-wide text-white max-md:text-xs">
+              <h1 className="block font-CooperHewitt text-base uppercase tracking-wide text-white max-md:text-xs">
                 {image.imageLocation}
               </h1>
             </div>

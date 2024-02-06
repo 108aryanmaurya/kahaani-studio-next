@@ -94,7 +94,7 @@ export default function PhotoModal({
             <span
               className={`absolute bottom-0 right-0  w-full bg-[#00000071] p-2 text-xl text-white opacity-0 transition-all duration-500 ease-in-out group-hover:opacity-100 max-md:opacity-100 max-sm:p-1`}
             >
-              <h1 className="font-Oswald text-base capitalize max-sm:text-xs">
+              <h1 className="font-CooperHewitt text-base capitalize max-sm:text-xs">
                 {selectedImage.imageLocation}
               </h1>
               <p className="font-Authorfont text-sm max-sm:text-[10px]">

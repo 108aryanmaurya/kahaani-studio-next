@@ -14,7 +14,7 @@ export default function HomeAbout() {
           ></img>
         </div>
         <div className="mr-28 flex w-full max-w-[500px] flex-col max-md:mr-0 max-md:mt-10 max-md:max-w-full max-md:px-5">
-          <h1 className="relative pb-5 font-Oswald text-5xl max-sm:text-2xl font-semibold capitalize max-sm:pb-2">
+          <h1 className="relative pb-5 font-CooperHewitt text-5xl max-sm:text-2xl font-semibold capitalize max-sm:pb-2">
             Shikha Gautam
           </h1>
           <p className="pb-5 max-sm:pb-2 font-HankenGrotesk text-2xl max-sm:text-base">

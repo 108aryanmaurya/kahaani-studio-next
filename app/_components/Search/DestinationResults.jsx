@@ -31,7 +31,7 @@ function DestinationResults({ destinations }) {
                 src={destination.imageURL || getDefaultImage()}
                 alt={destination.location}
               />
-              <span className="w-full text-center font-Oswald text-xs font-bold uppercase tracking-wider text-black transition-all duration-500 ease-out">
+              <span className="w-full text-center font-CooperHewitt text-xs font-bold uppercase tracking-wider text-black transition-all duration-500 ease-out">
                 {destination.location}
               </span>
             </div>

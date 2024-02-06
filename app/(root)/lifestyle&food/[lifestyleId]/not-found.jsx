@@ -43,7 +43,7 @@ export default function NotFound() {
                 404
               </p>
               <h1 className="mt-3 text-3xl font-semibold text-gray-800 font-HankenGrotesk">
-                Page Not Found
+                No Lifesyle Article Found
               </h1>
               <p className="mt-4 text-gray-500 text-xl font-CooperHewitt">
                 The page you're looking for doesn't exist. Please check the URL

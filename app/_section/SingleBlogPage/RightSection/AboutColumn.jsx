@@ -4,7 +4,7 @@ export default function AboutColumn() {
   return (
     <>
       <div className="z-50 mt-5 flex h-full w-full  flex-col items-center justify-center">
-        <h1 className="relative pb-5 text-left font-Oswald text-2xl font-semibold capitalize max-sm:pb-2">
+        <h1 className="relative pb-5 text-left font-CooperHewitt text-2xl font-semibold capitalize max-sm:pb-2">
           Shikha Gautam
         </h1>
         <div className="relative w-full cursor-pointer rounded-md">

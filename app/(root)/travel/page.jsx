@@ -1,5 +1,4 @@
 import React from "react";
-import Hero from "@/app/_section/Travel/Hero/Hero";
 import TravelDestinations from "@/app/_section/Travel/TravelDestination/TravelDestinations";
 import { fetchdestinations } from "@/lib/actions/destination.actions";
 import { fetchblogs } from "@/lib/actions/blogs.actions";
@@ -13,9 +12,6 @@ export default async function page() {
 
   return (
     <main className="pt-[4rem]">
-      <div>
-        <Hero />
-      </div>
       <div className="mx-auto max-w-screen-xl pt-14">
         <TravelDestinations destinations={destinations} />
       </div>

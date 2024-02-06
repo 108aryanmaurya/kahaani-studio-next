@@ -43,7 +43,7 @@ export default function TravelDestinations({ destinations }) {
                   src={destination.imageURL || getDefaultImage()}
                 />
                 <div className="absolute m-0 flex h-auto w-full flex-wrap items-center justify-center p-5 text-white">
-                  <span className="bg-[#00000082] px-10 max-sm:px-6 py-5 max-sm:py-3 font-Oswald text-xl font-bold uppercase tracking-wider transition-all duration-500 ease-out  max-sm:text-sm">
+                  <span className="bg-[#00000082] px-10 max-sm:px-6 py-5 max-sm:py-3 font-CooperHewitt text-xl font-bold uppercase tracking-wider transition-all duration-500 ease-out  max-sm:text-sm">
                     {destination.location}
                   </span>
                 </div>

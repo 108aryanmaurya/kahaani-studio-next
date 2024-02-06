@@ -93,7 +93,7 @@ const Navbar = () => {
         ref={navbarRef}
         className={`${
           pathname.includes("/admin") ? "hidden" : ""
-        } fixed top-0 z-[100] w-full select-none border-white transition-all duration-300  ease-in-out ${
+        } fixed top-0 z-[100] w-full max-w-[1600px] select-none border-white transition-all duration-300  ease-in-out ${
           isScrolled && (pathname === "/" || pathname === "/home")
             ? "mix-blen-difference"
             : "bg-stone-50/75 backdrop-blur-md"

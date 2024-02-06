@@ -49,7 +49,7 @@ export default function ShareModalHorizonatal({ title }) {
   return (
     <>
       <div className="my-5 flex w-full cursor-pointer flex-row items-center justify-start transition-all duration-500 ease-out max-md:flex-col">
-        <h1 className="mx-10 font-Oswald text-3xl font-extrabold max-md:text-lg max-sm:mb-2">
+        <h1 className="mx-10 font-CooperHewitt text-3xl font-extrabold max-md:text-lg max-sm:mb-2">
           Share the Article :{" "}
         </h1>
         <div className="flex flex-wrap gap-3 font-CooperHewitt text-white max-sm:gap-0">

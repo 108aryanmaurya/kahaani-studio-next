@@ -1,7 +1,7 @@
 import React from "react";
 import { FormatDate } from "@/app/_components/helper/FormatDate";
 
-export default function ArticleHero({ date, title, category, imageURL }) {
+export default function LifestyleHero({ date, title, category, imageURL }) {
   return (
     <>
       <section className="text-center">

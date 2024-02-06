@@ -14,7 +14,7 @@ export default function About() {
           ></img>
         </div>
         <div className="max-w-[400px] max-md:max-w-full flex flex-col max-md:mt-10 w-full mr-28 max-md:mr-0 max-md:px-5">
-          <h1 className="pb-5 max-sm:pb-2 font-semibold text-5xl relative font-Oswald capitalize">
+          <h1 className="pb-5 max-sm:pb-2 font-semibold text-5xl relative font-CooperHewitt capitalize">
             Shikha Gautam
           </h1>
           <p className="pb-5 text-lg font-CooperHewitt">

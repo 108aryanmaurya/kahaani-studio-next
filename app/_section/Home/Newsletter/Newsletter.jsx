@@ -9,7 +9,7 @@ export default function Newsletter() {
             <div className="mx-auto xl:px-12">
               <div className="grid items-center gap-12 lg:grid-cols-2">
                 <div className="md:mt-12 lg:mt-0">
-                  <h1 className="mb-12 flex flex-col font-Oswald text-5xl font-bold tracking-normal text-white max-md:mb-6 max-md:text-3xl 2xl:text-6xl">
+                  <h1 className="mb-12 flex flex-col font-CooperHewitt text-5xl font-bold tracking-normal text-white max-md:mb-6 max-md:text-3xl 2xl:text-6xl">
                     <div>
                       Are you ready <br className="max-md:hidden" />
                       <span className="text-primary blogstext-primary-400">

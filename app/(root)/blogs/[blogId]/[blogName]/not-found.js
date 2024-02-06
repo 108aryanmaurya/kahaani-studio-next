@@ -72,7 +72,7 @@ export default function NotFound() {
                 <div key={index} className="p-6 rounded-lg bg-blue-50">
                   <span className="text-2xl text-blue-500">{section.icon}</span>
 
-                  <h3 className="mt-2 text-xl font-Oswald font-medium text-gray-700">
+                  <h3 className="mt-2 text-xl font-CooperHewitt font-medium text-gray-700">
                     {section.title}
                   </h3>
 
