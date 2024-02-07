@@ -18,7 +18,6 @@ export default function StoryContent() {
   };
 
   const openStoryPage = (index) => {
-    // Navigate to the story page with the story ID
     router.push(`/story/${index}`);
   };
 

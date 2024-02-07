@@ -1,15 +1,14 @@
+"use client";
 import React, { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
 import StorySlider from "./StorySlider";
-
-const StoryModal = () => {
+import { useRouter } from "next/navigation";
+const StoryModal = ({ storyId }) => {
   const modalRef = useRef(null);
-  const { storyId } = useParams();
-
+  const router = useRouter();
   const handleOutsideClick = (event) => {
     if (modalRef.current === event.target) {
       // Clear the storyId when clicking outside the modal
-      Navigate(`/`);
+      router.push(`/`);
     }
   };
 
@@ -36,7 +35,7 @@ const StoryModal = () => {
         onClick={handleOutsideClick}
       >
         <div className="bg- flex h-screen items-center justify-center overflow-hidden rounded-lg shadow-xl max-lg:w-[100%]">
-          {storyId && <StorySlider />}
+          {storyId && <StorySlider storyId={storyId} />}
         </div>
       </div>
     </>

@@ -1,24 +1,23 @@
 import React from "react";
 import {
-  fetcharticleswithcontent,
-  fetcharticles,
-} from "@/lib/actions/articles.actions";
+  fetchlifestylewithcontent,
+  fetchlifestyle,
+} from "@/lib/actions/lifestyle.actions";
 import ShareModal from "@/app/_section/Share/ShareModal";
 import ShareModalHorizonatal from "@/app/_section/Share/ShareModalHorizonatal";
 import LifestyleHero from "@/app/_section/SingleLifestylePage/LifestyleHero";
 import LifestyleContent from "@/app/_section/SingleLifestylePage/LifestyleContent";
-import Footer from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleFooter";
 import { cache } from "react";
 import { notFound } from "next/navigation";
 
-const getarticles = cache(async (blogId) => {
-  const articles = await fetcharticleswithcontent(blogId);
-  return articles;
+const getlifestyle = cache(async (lifestyleId) => {
+  const lifestyle = await fetchlifestylewithcontent(lifestyleId);
+  return lifestyle;
 });
 
 export async function generateStaticParams() {
-  const articles = await fetcharticles();
-  return articles
+  const lifestyle = await fetchlifestyle();
+  return lifestyle
     .map((article) => ({
       params: {
         articleId: article._id,
@@ -28,12 +27,12 @@ export async function generateStaticParams() {
     .slice(0, 10);
 }
 
-export async function generateMetadata({ params: { articleId } }) {
-  const articles = await getarticles(articleId);
-  if (articles === false) {
+export async function generateMetadata({ params: { lifestyleId } }) {
+  const lifestyle = await getlifestyle(lifestyleId);
+  if (lifestyle === false) {
     return notFound();
   }
-  const { title, imageURL } = articles;
+  const { title, imageURL } = lifestyle;
   return {
     title: title,
     description: "This is the BlogPage Description",
@@ -46,13 +45,13 @@ export async function generateMetadata({ params: { articleId } }) {
   };
 }
 
-export default async function page({ params: { articleId, articleName } }) {
-  const articles = await getarticles(articleId);
-
-  if (articles === false) {
+export default async function page({ params: { lifestyleId, lifestyleName } }) {
+  const lifestyle = await getlifestyle(lifestyleId);
+  console.log(lifestyle);
+  if (!lifestyle) {
     return notFound();
   }
-  const { date, title, category, imageURL, articleContent } = articles;
+  const { date, title, category, imageURL, lifestyleContent } = lifestyle;
 
   return (
     <>
@@ -65,12 +64,11 @@ export default async function page({ params: { articleId, articleName } }) {
             category={category}
             imageURL={imageURL}
           />
-          <LifestyleContent content={articleContent?.content} />
+          <LifestyleContent content={lifestyleContent?.content} />
           <div className="mx-0 max-sm:mx-2  2xl:mx-20">
             <div className="">
               <ShareModalHorizonatal title={title} />
             </div>
-            <Footer />
           </div>
         </article>
       </div>

@@ -1,7 +1,30 @@
 "use client";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { deleteImage } from "@/lib/adminactions/admin.gallery.actions";
+import { fetchgallery } from "@/lib/actions/gallery.actions";
+import { toast } from "react-toastify";
 export default function UpdateImages({ images }) {
+  const [image, setImages] = useState([]);
+  useEffect(() => {
+    setImages(images);
+  }, [images]);
+
+  const handleDelete = async (imageId) => {
+    const authToken = JSON.parse(localStorage.getItem("authtoken"));
+    let isConfirm = confirm("Are you sure you want to delete this image?");
+    if (!isConfirm) {
+      return;
+    }
+    const deleted = await deleteImage(imageId, authToken);
+    if (deleted) {
+      const img = await fetchgallery();
+      setImages(img);
+      toast.success("Image deleted successfully!");
+    } else {
+      // Handle failure
+      toast.error("Failed to delete image!");
+    }
+  };
   return (
     <>
       <div className="mb-10 flex flex-col">
@@ -10,7 +33,7 @@ export default function UpdateImages({ images }) {
         </h1>
         <div className="mt-10 block w-full columns-3 break-inside-avoid gap-0 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
           {" "}
-          {images.map((image, index) => (
+          {image.map((image, index) => (
             <div
               className="group relative m-2 my-4  cursor-pointer overflow-hidden bg-stone-100 max-md:m-1 max-md:my-2 "
               key={index}
@@ -28,10 +51,13 @@ export default function UpdateImages({ images }) {
                   {image.imgDescription}
                 </p>
                 <div className="flex w-full justify-evenly gap-5 py-2">
-                  <button className="inline-block w-full rounded-md  bg-black px-4 py-2 font-medium text-white ">
+                  <button
+                    className="inline-block w-full rounded-md font-sans text-xl bg-gray-700 px-4 py-1 font-medium text-white "
+                    onClick={() => handleDelete(image._id)} // Assuming image._id is the unique identifier of the image
+                  >
                     Delete
                   </button>
-                  <button className="inline-block w-full rounded-md  bg-black px-4 py-2 font-medium text-white ">
+                  <button className="inline-block w-full rounded-md font-sans text-xl bg-gray-700 px-4 py-1 font-medium text-white ">
                     Update
                   </button>
                 </div>

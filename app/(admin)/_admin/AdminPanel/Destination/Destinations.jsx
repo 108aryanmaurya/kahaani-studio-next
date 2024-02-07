@@ -1,8 +1,14 @@
 "use client";
-import React, { useState, useContext, useEffect } from "react";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
+import { updateImageURL } from "@/lib/adminactions/admin.destination.actions";
+import { fetchdestinations } from "@/lib/actions/destination.actions";
 const Destinations = ({ destinations }) => {
+  const [destination, setDestinations] = useState([]);
+  useEffect(() => {
+    setDestinations(destinations);
+  }, [destinations]);
   const handleImageUpload = async (selectedImage, destinationId) => {
     try {
       console.log("Uploading image...");
@@ -34,8 +40,18 @@ const Destinations = ({ destinations }) => {
     handleImageUpload(selectedFile, destinationId);
   };
 
-  const handleSubmit = (imageURL, destinationId) => {
-    updateImageURL(destinationId, imageURL);
+  const handleSubmit = async (imageURL, destinationId) => {
+    console.log("Image URL:", imageURL);
+    const authToken = JSON.parse(localStorage.getItem("authtoken"));
+    const res = await updateImageURL(destinationId, imageURL, authToken);
+    if (res) {
+      const destination = await fetchdestinations();
+      setDestinations(destination);
+
+      toast.success("Destination Image uploaded!");
+    } else {
+      toast.error("Internal Server Error!");
+    }
   };
 
   return (
@@ -44,14 +60,14 @@ const Destinations = ({ destinations }) => {
         <h1 className="break-words text-center font-Gamiliademo text-2xl font-bold uppercase">
           Your Destinations
         </h1>
-        <div className="mt-10 flex w-full">
-          {destinations.map((destination, index) => (
+        <div className="mt-10 flex w-full flex-wrap">
+          {destination?.map((destination, index) => (
             <div
               className="max-w-1/4 min-w-1/4 group relative m-2 my-4 w-1/4 cursor-pointer overflow-hidden bg-stone-100 max-md:m-1 max-md:my-2 "
               key={index}
             >
               <div className="min-h-[150px] w-full">
-                {destination.imageURL ? (
+                {destination?.imageURL ? (
                   <img
                     className="min-h-[150px] w-full object-cover object-center"
                     src={destination.imageURL}
@@ -96,7 +112,7 @@ const Destinations = ({ destinations }) => {
                 )}
               </div>
               <div className="p-2 px-5">
-                {destination.imageURL && (
+                {destination?.imageURL && (
                   <div className="flex">
                     <label
                       htmlFor={`dropzone-file-${index}`}

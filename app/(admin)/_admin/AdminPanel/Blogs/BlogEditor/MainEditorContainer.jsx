@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useContext } from "react";
-import TextEditor from "./TextEditor";
-
+import React, { useState } from "react";
+import TextEditor from "../../Editor/TextEditor";
+import { addblogadmin } from "@/lib/adminactions/admin.blog.actions";
+import { toast } from "react-toastify";
 export default function MainEditorContainer() {
   const [formData, setFormData] = useState({
     title: "",
@@ -55,12 +56,16 @@ export default function MainEditorContainer() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call the addBlog function from the context to add the blog
-    // addBlog(formData);
-    console.log("Form Data:", formData);
-    // Add your logic to send the data to the server or perform any other actions
+    const authToken = JSON.parse(localStorage.getItem("authtoken"));
+    const res = await addblogadmin(formData, authToken);
+
+    if (res) {
+      toast.success("Blog added successfully!");
+    } else {
+      toast.error("Internal Server Error!");
+    }
   };
 
   return (

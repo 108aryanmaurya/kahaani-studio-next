@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useContext } from "react";
-import TextEditor from "./TextEditor";
-import ArticleAdminContext from "../../AdminContexts/ArticleContexts/ArticleAdminContext";
+import React, { useState } from "react";
+import TextEditor from "../../Editor/TextEditor";
+import { addarticleAdmin } from "@/lib/adminactions/admin.article.actions";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MainEditorContainerArticles() {
-  const articleAdminContext = useContext(ArticleAdminContext);
-
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -40,7 +40,8 @@ export default function MainEditorContainerArticles() {
       formData.append("upload_preset", "demo_kahaani_studio");
       formData.append("cloud_name", "dhktoeo0l");
 
-      const cloudinaryUrl = `https://api.cloudinary.com/v1_1/dhktoeo0l/image/upload`;
+      const cloudinaryUrl =
+        "https://api.cloudinary.com/v1_1/dhktoeo0l/image/upload";
 
       const response = await fetch(cloudinaryUrl, {
         method: "POST",
@@ -58,11 +59,21 @@ export default function MainEditorContainerArticles() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Call the addBlog function from the context to add the blog
-    console.log("Form Data:", formData);
-    // Add your logic to send the data to the server or perform any other actions
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const authToken = JSON.parse(localStorage.getItem("authtoken"));
+      const res = await addarticleAdmin(formData, authToken);
+
+      if (res) {
+        toast.success("Article added successfully!");
+      } else {
+        toast.error("Internal Server Error!");
+      }
+    } catch (error) {
+      toast.error("Error adding Article!");
+      console.error(error);
+    }
   };
 
   return (
@@ -194,7 +205,7 @@ export default function MainEditorContainerArticles() {
                 type="submit"
                 className="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
               >
-                Add Blog
+                Add Article
               </button>
             </div>
           </form>

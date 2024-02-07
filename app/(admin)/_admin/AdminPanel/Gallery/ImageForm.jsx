@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useContext } from "react";
-
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { addimage } from "@/lib/adminactions/admin.gallery.actions";
 const ImageForm = () => {
   const [formData, setFormData] = useState({
     imageURL: "",
@@ -64,22 +65,25 @@ const ImageForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const authToken = JSON.parse(localStorage.getItem("authtoken"));
 
     // Call the addImage function from the context to submit the data
-    addImage(formData);
 
+    const res = addimage(formData, authToken);
+    if (res) {
+      toast.success("Image added!");
+    } else {
+      toast.error("Internal Server Error!");
+    }
     // Optional: You can clear the form after submission
-    setFormData({
-      imageURL: "",
-      imageLocation: "",
-      imgDescription: "",
-    });
+    // setFormData({
+    //   imageURL: "",
+    //   imageLocation: "",
+    //   imgDescription: "",
+    // });
 
     // Clear the previewURL after submission
     setPreviewURL("");
-  };
-  const addImage = (formData) => {
-    console.log("Adding image...", formData);
   };
 
   return (

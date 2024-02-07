@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaChevronDown,
+  FaChevronUp,
+  FaYoutube,
+  FaLifeRing,
+} from "react-icons/fa";
 import Link from "next/link";
 import { GoFileMedia } from "react-icons/go";
 import { GrArticle } from "react-icons/gr";
@@ -31,6 +38,18 @@ export default function Sidebar() {
       links: ["addarticle", "updatearticle"],
     },
     {
+      name: "Lifestyle",
+      icon: FaLifeRing,
+      linksTitle: ["Add Lifestyle", "Update Lifesytle"],
+      links: ["addlifestyle", "updatelifestyle"],
+    },
+    {
+      name: "Youtube",
+      icon: FaYoutube,
+      linksTitle: ["Update"],
+      links: ["updatevideos"],
+    },
+    {
       name: "Destinations",
       icon: CiLocationOn,
       linksTitle: ["View/Update"],
@@ -54,16 +73,16 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="sticky top-0 flex h-screen w-72 min-w-72 max-w-72 select-none flex-col border-r-2 border-black bg-stone-800">
-        <div className="h-full w-full  p-6">
-          <div className="flex items-center  justify-between overflow-y-scroll  font-HankenGrotesk font-bold  text-gray-100 ">
+      <aside className="fixed top-0 flex h-screen w-72 min-w-72 max-w-72 select-none flex-col border-r-2 border-black bg-stone-800">
+        <div className="h-full w-full   p-6">
+          <div className="flex items-center  justify-between overflow-y-scroll  font-sans font-bold  text-gray-100 ">
             <h2>Dashboard</h2>
             <FaBars className="text-2xl" />
           </div>
           <nav className="mt-5 h-full overflow-y-scroll scroll-smooth text-sm">
             <div>
               <Link
-                className="my-1 flex cursor-pointer items-center justify-between rounded-lg p-3 font-VulturaRegular text-base font-semibold uppercase text-gray-300 transition-all duration-200 ease-in-out hover:bg-gray-600 "
+                className="my-1 flex cursor-pointer items-center justify-between rounded-lg p-3 font-sans text-base font-semibold uppercase text-gray-300 transition-all duration-200 ease-in-out hover:bg-gray-600 "
                 href={`/admin`}
                 rel="noopener noreferrer"
               >
@@ -72,7 +91,7 @@ export default function Sidebar() {
                     className="mr-2 inline-block text-xl"
                     alt="home"
                   />
-                  <span className="flex items-center rounded-md font-HankenGrotesk font-bold text-gray-300 ">
+                  <span className="flex items-center rounded-md font-sans font-bold text-gray-300 ">
                     Home
                   </span>
                 </span>
@@ -81,7 +100,7 @@ export default function Sidebar() {
             {sectionsData.map((section, index) => (
               <div key={index}>
                 <h2
-                  className="my-1 flex cursor-pointer items-center justify-between rounded-lg p-3 font-VulturaRegular text-base font-semibold uppercase text-gray-300 transition-all duration-200 ease-in-out hover:bg-gray-600"
+                  className="my-1 flex cursor-pointer items-center justify-between rounded-lg p-3 font-sans text-base font-semibold uppercase text-gray-300 transition-all duration-200 ease-in-out hover:bg-gray-600"
                   onClick={() => toggleSection(section.name.toLowerCase())}
                 >
                   <span className="flex items-center justify-center">
@@ -110,7 +129,7 @@ export default function Sidebar() {
                   {section.linksTitle.map((linkTitle, linkIndex) => (
                     <Link
                       key={linkIndex}
-                      className="flex items-center rounded-md p-2 font-HankenGrotesk text-sm font-bold text-gray-100 transition-all duration-200 ease-in-out  hover:bg-gray-500"
+                      className="flex items-center rounded-md p-2 font-sans text-sm font-bold text-gray-100 transition-all duration-200 ease-in-out  hover:bg-gray-500"
                       rel="noopener noreferrer"
                       href={`/admin/${section.name.toLowerCase()}/${
                         section.links[linkIndex]

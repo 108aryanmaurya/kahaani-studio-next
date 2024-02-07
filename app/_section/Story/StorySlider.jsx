@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Stories from "stories-react";
 import { storyContentGroup } from "@/app/_components/constants/constants";
 import "stories-react/dist/index.css";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
-const StorySlider = () => {
-  const { storyId } = useParams();
-  const navigate = useNavigate();
+const StorySlider = ({ storyId }) => {
+  const router = useRouter();
   const [currentStoryIndex, setCurrentStoryIndex] = useState(storyId);
 
   useEffect(() => {
@@ -16,15 +14,15 @@ const StorySlider = () => {
 
   const nextStory = () => {
     if (currentStoryIndex < storyContentGroup.length - 1) {
-      navigate(`/story/${parseInt(currentStoryIndex) + 1}`);
+      router.push(`/story/${parseInt(currentStoryIndex) + 1}`);
     } else {
-      navigate(`/home`);
+      router.push(`/`);
     }
   };
 
   const prevStory = () => {
     if (currentStoryIndex > 0) {
-      navigate(`/story/${parseInt(currentStoryIndex) - 1}`);
+      router.push(`/story/${parseInt(currentStoryIndex) - 1}`);
     } else {
       // Handle case when there is no previous story
     }

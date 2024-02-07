@@ -1,9 +1,9 @@
 import React from "react";
-import { fetchblogs } from "@/lib/actions/blogs.actions";
 import FoodCards from "@/app/_section/LifeStyle/FoodCards";
 import LifestyleCard from "@/app/_section/LifeStyle/LifestyleCard";
+import { fetchlifestyle } from "@/lib/actions/lifestyle.actions";
 async function page() {
-  const lifestyle = await fetchblogs();
+  const lifestyle = await fetchlifestyle();
 
   return (
     <main className="mt-[8rem]">

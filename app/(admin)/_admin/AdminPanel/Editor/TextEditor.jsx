@@ -40,13 +40,11 @@ const TextEditor = ({ content, onContentChange }) => {
       >
         Blog Content Editor
       </label>
-      <form method="post">
-        <textarea id="mytextarea">Hello, World!</textarea>
-      </form>
+
       <Editor
         placeholder="Write your blog here..."
         value={content}
-        apiKey="5ut6u9dgrcqt2984hizk9fjum5vun8f704k2usewa1yf1fqu"
+        apiKey="lax06vjgqr9gdo7xel72i6hv15e6bqq8cb51riod2j3ae502"
         onEditorChange={handleEditorChange}
         init={{
           width: "100%",

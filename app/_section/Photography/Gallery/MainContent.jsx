@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import PhotoModal from "./PhotoModal";
 import GallerySkeleton from "./GallerySkeleton";
@@ -38,7 +38,7 @@ export default function MainContent({ photos }) {
 
   return (
     <>
-      <h1 className="text-center font-CooperHewitt text-4xl font-thin uppercase">
+      <h1 className="text-center font-CooperHewitt text-4xl mt-20 font-thin uppercase">
         Photo Gallery
       </h1>
       <div className="mt-10 block w-full columns-3 max-sm:p-1 break-inside-avoid gap-10 max-sm:gap-1 px-10 max-lg:columns-2 max-md:columns-2 max-md:px-0">
