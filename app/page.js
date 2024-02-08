@@ -7,6 +7,7 @@ import YoutubeContent from "./_section/Home/YoutubeContent/YoutubeContent";
 import NewsletterHero from "./_section/Home/Newsletter/NewsletterHero";
 import StoryContent from "./_section/Home/Stories/StoryContent";
 import { fetchvideos } from "@/lib/actions/youtube.actions";
+import { fetchAllStories } from "@/lib/actions/stories.actions";
 export async function generateMetadata() {
   const title = "hello";
   const description = "some descr";
@@ -20,6 +21,8 @@ export async function generateMetadata() {
 }
 export default async function Home() {
   const videos = await fetchvideos();
+  const stories = await fetchAllStories();
+  console.log(videos);
   return (
     <>
       <main>
@@ -31,7 +34,7 @@ export default async function Home() {
           <HomeAbout />
         </div>
         <div className="mx-auto max-w-screen-xl my-32 max-md:pt-5">
-          <StoryContent />
+          <StoryContent stories={stories} />
         </div>
         <div className="mx-auto max-w-screen-xl pt-10 max-md:pt-5">
           <YoutubeContent videos={videos} />

@@ -2,13 +2,13 @@
 import React, { useEffect, useRef } from "react";
 import StorySlider from "./StorySlider";
 import { useRouter } from "next/navigation";
-const StoryModal = ({ storyId }) => {
+const StoryModal = ({ storyId, stories }) => {
   const modalRef = useRef(null);
   const router = useRouter();
   const handleOutsideClick = (event) => {
     if (modalRef.current === event.target) {
       // Clear the storyId when clicking outside the modal
-      router.push(`/`);
+      router.push(`/story`);
     }
   };
 
@@ -35,7 +35,7 @@ const StoryModal = ({ storyId }) => {
         onClick={handleOutsideClick}
       >
         <div className="bg- flex h-screen items-center justify-center overflow-hidden rounded-lg shadow-xl max-lg:w-[100%]">
-          {storyId && <StorySlider storyId={storyId} />}
+          {storyId && <StorySlider storyId={storyId} stories={stories} />}
         </div>
       </div>
     </>

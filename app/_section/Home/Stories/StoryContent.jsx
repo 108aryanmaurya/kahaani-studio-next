@@ -4,9 +4,9 @@ import React, { useRef, useState, lazy, Suspense } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 const LazyStoryModal = lazy(() => import("../../Story/StoryModal"));
-import { stories } from "@/app/_components/constants/constants";
+// import { stories } from "@/app/_components/constants/constants";
 
-export default function StoryContent() {
+export default function StoryContent({ stories }) {
   const scrollContainerRef = useRef(null);
   const [selectedStoryIndex, setSelectedStoryIndex] = useState(null);
   const router = useRouter(); // Initialize useHistory
@@ -48,11 +48,11 @@ export default function StoryContent() {
             >
               Spotlight
             </h1>
-            {stories.map((story, index) => (
+            {stories?.map((story, index) => (
               <div
                 key={index}
                 className="relative flex h-[400px] w-full min-w-[300px] cursor-pointer items-end justify-start bg-gray-500 bg-cover bg-center text-left max-md:h-[350px] max-md:min-w-[250px] 2xl:h-[500px]"
-                onClick={() => openStoryPage(index)}
+                onClick={() => openStoryPage(story._id)}
                 style={{
                   backgroundImage: `url("${story.imageUrl}")`,
                 }}

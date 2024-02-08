@@ -24,8 +24,8 @@ export default function YoutubeContent({ videos }) {
             />
           </div>
           <div className="mx-5 flex flex-col justify-between gap-3 max-md:mx-0">
-            {videos?.slice(1, 4).map((video) => (
-              <div key={video.id} className=" aspect-video ">
+            {videos?.slice(1, 4).map((video, index) => (
+              <div key={index} className=" aspect-video ">
                 <YoutubeLazyLoad
                   videoUrl={video?.youtubeId}
                   altText={video?.title}

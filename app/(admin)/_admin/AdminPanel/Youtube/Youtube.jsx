@@ -90,7 +90,7 @@ const Youtube = ({ videos }) => {
         </div>
         <div className="mt-10 flex w-full flex-wrap gap-5 items-center justify-center">
           {video?.map((videoItem, index) => (
-            <div className="max-md:mb-4 max-md:w-full w-1/4">
+            <div className="max-md:mb-4 max-md:w-full w-1/4" key={index}>
               <div
                 className=" group relative cursor-pointer overflow-hidden bg-stone-100 max-md:m-1 max-md:my-2 "
                 key={index}

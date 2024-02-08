@@ -1,9 +1,12 @@
 import React from "react";
+import StoriesPage from "@/app/_section/Story/StoryPage/StoriesPage";
+import { fetchAllStories } from "@/lib/actions/stories.actions";
 
-export default function page() {
+export default async function page() {
+  const stories = await fetchAllStories();
   return (
     <div>
-      <h1>Stories Page</h1>
+      <StoriesPage stories={stories} />
     </div>
   );
 }
