@@ -1,6 +1,7 @@
 import React from "react";
+import MoreArticles from "./MoreArticles";
 
-export default function Footer() {
+export default function Footer({ category }) {
   return (
     <>
       <div>
@@ -123,6 +124,7 @@ export default function Footer() {
             </svg>
           </a>
         </div>
+        <MoreArticles category={category}></MoreArticles>
       </div>
     </>
   );

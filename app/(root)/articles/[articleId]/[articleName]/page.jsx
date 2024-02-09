@@ -11,6 +11,7 @@ import SingleBlogPageSkeleton from "@/app/_layouts/Skeletons/SingleBlogPageSkele
 import Footer from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleFooter";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import MoreArticles from "@/app/_section/SingleArticlesPage/MiddleSection/MoreArticles";
 
 const getarticles = cache(async (articleId) => {
   const articles = await fetcharticleswithcontent(articleId);
@@ -71,7 +72,7 @@ export default async function page({ params: { articleId, articleName } }) {
             <div className="">
               <ShareModalHorizonatal title={title} />
             </div>
-            <Footer />
+            <Footer category={category} />
           </div>
         </article>
       </div>

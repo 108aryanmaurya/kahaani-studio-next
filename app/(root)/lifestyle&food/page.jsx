@@ -13,6 +13,7 @@ async function page() {
       <div className="mx-auto max-w-screen-xl mt-20 max-md:mt-10 ">
         <FoodCards />
       </div>
+      <div></div>
     </main>
   );
 }

@@ -9,6 +9,7 @@ import LifestyleHero from "@/app/_section/SingleLifestylePage/LifestyleHero";
 import LifestyleContent from "@/app/_section/SingleLifestylePage/LifestyleContent";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import Footer from "@/app/_section/SingleArticlesPage/MiddleSection/ArticleFooter";
 
 const getlifestyle = cache(async (lifestyleId) => {
   const lifestyle = await fetchlifestylewithcontent(lifestyleId);
@@ -69,6 +70,9 @@ export default async function page({ params: { lifestyleId, lifestyleName } }) {
             <div className="">
               <ShareModalHorizonatal title={title} />
             </div>
+          </div>
+          <div>
+            <Footer category={category}></Footer>
           </div>
         </article>
       </div>

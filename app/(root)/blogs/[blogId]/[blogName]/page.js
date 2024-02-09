@@ -11,6 +11,7 @@ import ShareModalHorizonatal from "@/app/_section/Share/ShareModalHorizonatal";
 import SingleBlogPageSkeleton from "@/app/_layouts/Skeletons/SingleBlogPageSkeleton";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import MoreBlogs from "@/app/_section/SingleBlogPage/RightSection/MoreBlogs";
 
 const getblogs = cache(async (blogId) => {
   const blogs = await fetchablogswithcontent(blogId);
@@ -53,6 +54,7 @@ export default async function page({ params: { blogId, blogName } }) {
   }
 
   const { date, title, category, imageURL, blogContent } = blogs;
+  console.log(category);
   return (
     <>
       <ShareModal title={title} />
@@ -72,6 +74,8 @@ export default async function page({ params: { blogId, blogName } }) {
         </article>
         <div className="pl-5">
           <AboutColumn />
+          <MoreBlogs category={category} />
+
         </div>
       </div>
     </>
