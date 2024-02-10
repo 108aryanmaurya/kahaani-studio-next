@@ -59,12 +59,12 @@ export default async function page({ params: { lifestyleId, lifestyleName } }) {
       <div className=" mx-auto mt-20 flex w-full items-start justify-start px-10 max-md:flex-col max-md:px-5 max-sm:px-0">
         <ShareModal title={title} />
         <article className="mx-auto max-w-[70vw] border-r border-black max-md:max-w-full  max-md:border-none max-md:pr-0">
-          <LifestyleHero
+          {/* <LifestyleHero
             title={title}
             date={date}
             category={category}
             imageURL={imageURL}
-          />
+          /> */}
           <LifestyleContent content={lifestyleContent?.content} />
           <div className="mx-0 max-sm:mx-2  2xl:mx-20">
             <div className="">
